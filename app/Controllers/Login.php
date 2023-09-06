@@ -47,4 +47,3 @@ class Login extends BaseController
         session_destroy();
     }
 }
-
