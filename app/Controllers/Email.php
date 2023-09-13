@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 namespace App\Controllers;
 
 class Email extends BaseController
@@ -26,7 +25,7 @@ class Email extends BaseController
 
         if (! $email->send())
         {
-            echo "no se ah podido enviar el correo";    
+            echo "naaa";    
         }else{
             echo "correo enviado exitosamente";
         }
