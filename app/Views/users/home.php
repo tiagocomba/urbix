@@ -195,7 +195,7 @@
 										</div>
 
 										<div class="input-field">
-    <input type="email" name="correo1" class="form-control" id="correo1" placeholder="Dirección de Correo" required readonly value="<?= session('user')->email ?>">
+    <input  class="form-control" required readonly value="<?= session('user')->email ?>">
     <span class="focus"></span>
     <div class="col-md-6">
     </div>
