@@ -30,7 +30,7 @@
                                     <h3 class="wow fadeInUp" data-wow-delay="1s">Di hola 👋</h3><br>
                                     <p class="wow fadeInUp" data-wow-delay="1.2s">Estimado(a) lector(a),
 
-                                    Agradezco sinceramente su interés en mis proyectos. Si tiene alguna duda o consulta sobre alguno de ellos, le invito cordialmente a ponerse en contacto conmigo a través de correo electrónico. Para su conveniencia, he creado un formulario de contacto que puede completar sus datos y enviarme un correo electrónico.</p>
+                                    Agradezco sinceramente su interés en nuestros productos. Si tiene alguna duda o consulta sobre alguno de ellos, le invito cordialmente a ponerse en contacto a través de correo electrónico. Para su conveniencia, he creado un formulario de contacto que puede completar sus datos y enviarme un correo electrónico.</p>
 
                               </div>
                         </div>
