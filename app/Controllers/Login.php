@@ -9,7 +9,7 @@ class Login extends BaseController
     public function index()
     {
         
-        return view('users/login');
+        return view('main/form/login');
     }
 
     public function do_login()
@@ -28,7 +28,7 @@ class Login extends BaseController
                    
                     if ($result->rol == 1) {
                         $this->session->set("user", $result);
-                        return redirect()->to('/listar');
+                        return redirect()->to('listar');
                     } else {
                         $this->session->set("user", $result);
                         return redirect()->to('/dashboard');

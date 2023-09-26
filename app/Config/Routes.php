@@ -77,3 +77,4 @@ $routes->post('enviar_email', 'Email::enviar_email');
 $routes->get('inicio', 'Emaill::index');
 $routes->post('enviar__email', 'Email2::enviar__email');
 $routes->get('test', 'Test::index');
+$routes->get('carrito','Carrito::index');
