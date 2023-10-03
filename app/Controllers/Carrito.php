@@ -15,10 +15,10 @@ class Carrito extends Controller
         $datos['cabecera'] = view('templates/cabecera');
         $datos['pie'] = view('templates/piepagina');
 
-        // Cargamos la vista "test.php" con los mismos datos
-        $vistaTest = view('main/form/carrito', $datos);
+        // Cargamos la vista "carrito.php" con los mismos datos
+        $vistaCarrito = view('main/form/carrito', $datos);
 
         // Devolvemos la vista
-        return $vistaTest;
+        return $vistaCarrito;
     }
 }

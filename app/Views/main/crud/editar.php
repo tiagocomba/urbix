@@ -23,6 +23,10 @@
                                         <label for="nombre">Nombre:</label>
                                         <input id="nombre" value="<?=$teclado['nombre']?>" class="form-control" type="text" name="nombre">
                                 </div>
+                                <div class="form-group">
+                                        <label for="precio">Precio:</label>
+                                        <input id="precio" value="<?=$teclado['precio']?>" class="form-control" type="number" name="precio">
+                                </div>
 
                                 <div class="form-group">
                                         <label for="imagen">Imagen:</label>

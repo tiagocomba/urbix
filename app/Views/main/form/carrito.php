@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="<?php echo base_url('assets/css/carrito.css');?>">
-    <script src="<?php echo base_url('assets/js/app.js');?>" async></script>
+    <script src="<?php echo base_url('assets/js/carrito.js');?>" async></script>
     <title>Tienda de Relojes | </title>
 </head>
 <body>
@@ -16,13 +16,18 @@
     <section class="contenedor">
         <!-- Contenedor de elementos -->
         <div class="contenedor-items">
+        <?php foreach ($teclados as $teclado): ?>
             <div class="item">
-                <span class="titulo-item">Box Engasse</span>
-                <img src="<?php echo base_url('assets/img/logo/123.png');?>" alt="" class="img-item">
-                <span class="precio-item">$15.000</span>
+                <span class="titulo-item"><?php echo $teclado['nombre']; ?></span>
+                <img src="<?php echo base_url('uploads/' . $teclado['imagen']); ?>" alt="Imagen del teclado" class="img-item">
+                <!-- Puedes modificar la lógica de precio y botón según tus necesidades -->
+                <span class="precio-item">$<?php echo number_format($teclado['precio']); ?></span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
-        </div>
+        <?php endforeach; ?>
+    </div>
+
+    <?php echo $pie; ?>
         <!-- Carrito de Compras -->
         <div class="carrito" id="carrito">
             <div class="header-carrito">
@@ -67,7 +72,7 @@
                 <div class="fila">
                     <strong>Tu Total</strong>
                     <span class="carrito-precio-total">
-                        $120.000,00
+                     
                     </span>
                 </div>
                 <button class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i> </button>
