@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="form-group">
                                         <label for="precio">Precio:</label>
-                                        <input id="precio" value="<?=$teclado['precio']?>" class="form-control" type="number" name="precio">
+                                        <input id="precio" value="<?=$teclado['precio']?>" class="form-control" type="text" name="precio">
                                 </div>
 
                                 <div class="form-group">

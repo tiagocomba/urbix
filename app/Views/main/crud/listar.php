@@ -40,7 +40,7 @@
         
                         </td>
                         <td>
-                                <?php echo $teclado ['precio'];?>
+                        <?php echo number_format($teclado['precio'], 2, ',', '.'); ?>
         
                         </td>
                         <td>

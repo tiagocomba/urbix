@@ -45,7 +45,7 @@ class Teclados extends Controller{
 
         $validacion = $this->validate([
             'nombre' => 'required|min_length[3]|max_length[255]',
-            'precio' => 'required|decimal[10,2]',
+            'precio' => 'required|numeric',
             'imagen' => [
                 'uploaded[imagen]',
                 'mime_in[imagen,image/jpg,image/jpeg,image/png]',
@@ -98,7 +98,7 @@ class Teclados extends Controller{
         $datos['cabecera'] = view('templates/cabecera');
         $datos['pie'] = view('templates/piepagina');
 
-        return view('crud/editar', $datos);
+        return view('main/crud/editar', $datos);
 
     }
 
@@ -114,7 +114,7 @@ class Teclados extends Controller{
 
         $validacion = $this->validate([
             'nombre' => 'required|min_length[3]|max_length[255]',
-            'precio' => 'required|decimal[10,2]'
+            'precio' => 'required|numeric',
         ]);
 
         if(!$validacion){
