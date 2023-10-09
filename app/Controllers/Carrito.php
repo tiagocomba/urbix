@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\Teclado;
+use App\Models\Carritos;
 
 class Carrito extends Controller
 {
@@ -20,5 +21,25 @@ class Carrito extends Controller
 
         // Devolvemos la vista
         return $vistaCarrito;
+    }
+    public function guardar(){
+    // Obtener los datos del producto desde la segunda vista
+        $nombre = $_POST['nombre']; // Asegúrate de cambiar 'nombre' por el nombre real del campo en tu formulario
+        $precio = $_POST['precio'];
+        $imagen = $_POST['imagen'];
+
+    // Crear una instancia del modelo que representa el carrito
+        $carrito = new Carrito();
+    
+    // Crear una instancia del modelo que representa el producto
+        $datos=[
+            'nombre'=>$nombre= $this->request->getVar('nombre'),
+            'precio'=>$precio=$this->request->getVar('precio'),
+            'imagen'=>$imagen=$this->request->getVar('imagen')
+        ];
+
+
+        $carrito->insert($datos);
+        return redirect()->to('carrito');
     }
 }

@@ -22,7 +22,11 @@
                 <img src="<?php echo base_url('uploads/' . $teclado['imagen']); ?>" alt="Imagen del teclado" class="img-item">
                 <!-- Puedes modificar la lógica de precio y botón según tus necesidades -->
                 <span class="precio-item">$<?php echo number_format($teclado['precio'], 2, ',', '.'); ?></span>
-                <button class="boton-item">Agregar al Carrito</button>
+                <form method="post" action="<?php echo base_url('guardar'); ?>">
+                    <input type="hidden" name="nombre" value="<?php echo $teclado['nombre']; ?>">
+                    <input type="hidden" name="precio" value="<?php echo $teclado['precio']; ?>">
+                    <input type="hidden" name="imagen" value="<?php echo $teclado['imagen']; ?>">
+                    <button type="submit" class="boton-item">Agregar al Carrito</button>
             </div>
         <?php endforeach; ?>
     </div>
