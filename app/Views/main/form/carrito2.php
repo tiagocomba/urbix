@@ -32,7 +32,7 @@
         
                         </td>
                         <td>
-                                <a href="<?=base_url('eliminarcar/'.$car['id_carrito'])?>" class="btn btn-danger" type="button">Eliminar</a>
+                                <a href="<?=base_url('carrito2/eliminarcar/'.$car['id_carrito'])?>" class="btn btn-danger" type="button">Eliminar</a>
                         </td>
                 </tr>
                 <?php endforeach; ?>
