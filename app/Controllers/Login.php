@@ -34,10 +34,10 @@ class Login extends BaseController
                         return redirect()->to('/dashboard');
                     }
                 } else {
-                    echo 'Invalid email or password';
+                    echo 'contraseña o email incorrecto';
                 }
             } else {
-                echo 'Invalid email or password';
+                echo 'contraseña o email incorrecto';
             }
         
     }

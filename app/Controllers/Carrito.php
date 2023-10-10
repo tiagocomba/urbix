@@ -24,7 +24,7 @@ class Carrito extends Controller
     }
     public function guardar(){
     // Obtener los datos del producto desde la segunda vista
-        $nombre = $_POST['nombre']; // Asegúrate de cambiar 'nombre' por el nombre real del campo en tu formulario
+        $nombre = $_POST['nombre']; 
         $precio = $_POST['precio'];
         $imagen = $_POST['imagen'];
 

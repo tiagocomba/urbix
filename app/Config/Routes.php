@@ -79,3 +79,5 @@ $routes->post('enviar__email', 'Email2::enviar__email');
 $routes->get('test', 'Test::index');
 $routes->get('carrito','Carrito::index');
 $routes->post('guar','Carrito::guardar');
+$routes->get('carrito2','Carrito2::index');
+$routes->get('eliminarcar/(:num)', 'Carrito2::eliminarcar/$1');
