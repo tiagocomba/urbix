@@ -29,7 +29,7 @@ class Carrito extends Controller
         $imagen = $_POST['imagen'];
 
     // Crear una instancia del modelo que representa el carrito
-        $carrito = new Carrito();
+        $carrito = new Carritos();
     
     // Crear una instancia del modelo que representa el producto
         $datos=[
