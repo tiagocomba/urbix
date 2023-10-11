@@ -8,6 +8,7 @@
                         <th>#</th>
                         <th>imagen</th>
                         <th>nombre</th>
+                        <th>cantidad</th>
                         <th>precio</th>
                         <th>Acciones</th>
                 </tr>
@@ -25,6 +26,10 @@
                         </td>
                         <td>
                                 <?php echo $car ['nombre'];?>
+        
+                        </td>
+                        <td>
+                                <?php echo $car ['cantidad'];?>
         
                         </td>
                         <td>

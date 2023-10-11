@@ -22,24 +22,35 @@ class Carrito extends Controller
         // Devolvemos la vista
         return $vistaCarrito;
     }
-    public function guardar(){
-    // Obtener los datos del producto desde la segunda vista
-        $nombre = $_POST['nombre']; 
-        $precio = $_POST['precio'];
-        $imagen = $_POST['imagen'];
-
-    // Crear una instancia del modelo que representa el carrito
+    public function guardar()
+    {
+        // Obtener los datos del producto desde la segunda vista
+        $nombre = $this->request->getVar('nombre'); 
+        $precio = $this->request->getVar('precio');
+        $imagen = $this->request->getVar('imagen');
+    
+        // Crear una instancia del modelo que representa el carrito
         $carrito = new Carritos();
     
-    // Crear una instancia del modelo que representa el producto
-        $datos=[
-            'nombre'=>$nombre= $this->request->getVar('nombre'),
-            'precio'=>$precio=$this->request->getVar('precio'),
-            'imagen'=>$imagen=$this->request->getVar('imagen')
-        ];
-
-
-        $carrito->insert($datos);
+        // Verificar si el producto ya está en el carrito
+        $producto_en_carrito = $carrito->where('nombre', $nombre)->first();
+    
+        if ($producto_en_carrito) {
+            // Actualizar cantidad 
+            $carrito->update($producto_en_carrito['id_carrito'], ['cantidad' => $producto_en_carrito['cantidad'] + 1]);
+        } else {
+            // Insertar nuevo producto en el carrito
+            $datos = [
+                'nombre' => $nombre,
+                'precio' => $precio,
+                'imagen' => $imagen,
+                'cantidad' => 1, 
+            ];
+    
+            $carrito->insert($datos);
+        }
+    
         return redirect()->to('carrito');
     }
+    
 }
