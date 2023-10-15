@@ -28,7 +28,6 @@ class Carrito extends Controller
         $id = $this->request->getVar('id_teclado');
         $nombre = $this->request->getVar('nombre'); 
         $precio = $this->request->getVar('precio');
-        $imagen = $this->request->getVar('imagen');
     
 
         // Obtener id_user desde la sesión
@@ -51,7 +50,6 @@ class Carrito extends Controller
                 'id_teclado' => $id,
                 'nombre' => $nombre,
                 'precio' => $precio,
-                'imagen' => $imagen,
                 'cantidad' => 1, 
             ];
     

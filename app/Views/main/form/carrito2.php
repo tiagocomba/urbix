@@ -21,7 +21,7 @@
                                 <?php echo $car['id_carrito'];?>
                         </td>
                         <td>
-                                <img class="img-thumbnail" width="100" src="<?=base_url('uploads/'.$car['imagen'])?>" alt="teclado">
+                            <img class="img-thumbnail" width="100" src="<?= base_url('uploads/'.$car['teclado_imagen']) ?>" alt="teclado">
 
                         </td>
                         <td>
