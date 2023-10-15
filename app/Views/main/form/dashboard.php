@@ -77,7 +77,7 @@
                                                 <label>User Id</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p><?= session('user')->id; ?></p>
+                                                <p><?= session('user')->id_user; ?></p>
                                             </div>
                                         </div>
                                         <div class="row">

@@ -10,7 +10,7 @@ class Dashboard extends BaseController
     {
         $user = session('user');
     
-        if (!$user || $user->id < 1) {
+        if (!$user || $user->id_user < 1) {
             return redirect()->to('login');
         } else {
             return view('main/form/dashboard');

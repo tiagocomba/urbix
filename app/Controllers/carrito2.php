@@ -8,18 +8,21 @@ class Carrito2 extends Controller{
     public function index()
     {
         $car = new Carritos();
-
-        $datos['carritos'] = $car->orderBy('id_carrito', 'ASC')->findAll();
-
+    
+        // Obtener id_user desde la sesión
+        $id_user = session('user')->id_user;
+    
+        // Filtrar los resultados para mostrar solo aquellos del usuario en sesión
+        $datos['carritos'] = $car->where('id_user', $id_user)->orderBy('id_carrito', 'ASC')->findAll();
+    
         $datos['cabecera'] = view('templates/cabecera');
         $datos['pie'] = view('templates/piepagina');
-
-      
+    
         $vistaCarrito = view('main/form/carrito2', $datos);
-
-      
+    
         return $vistaCarrito;
     }
+    
     public function eliminarcar($id=null){
 
         $car = new Carritos();

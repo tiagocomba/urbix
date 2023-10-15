@@ -22,7 +22,7 @@ class Login extends BaseController
     
             $result = $userModel->where('email', $email)->first();
     
-            if ($result !== null && $result->id > 0) {
+            if ($result !== null && $result->id_user > 0) {
                 if (password_verify($password, $result->password)) {
                 echo $rol;
                    

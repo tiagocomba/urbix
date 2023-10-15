@@ -11,7 +11,7 @@ class Carrito extends Controller
     {
         $teclado = new Teclado();
 
-        $datos['teclados'] = $teclado->orderBy('id', 'ASC')->findAll();
+        $datos['teclados'] = $teclado->orderBy('id_teclado', 'ASC')->findAll();
 
         $datos['cabecera'] = view('templates/cabecera');
         $datos['pie'] = view('templates/piepagina');
@@ -25,15 +25,21 @@ class Carrito extends Controller
     public function guardar()
     {
         // Obtener los datos del producto desde la segunda vista
+        $id = $this->request->getVar('id_teclado');
         $nombre = $this->request->getVar('nombre'); 
         $precio = $this->request->getVar('precio');
         $imagen = $this->request->getVar('imagen');
     
+
+        // Obtener id_user desde la sesión
+        $id_user = session('user')->id_user;
+
+
         // Crear una instancia del modelo que representa el carrito
         $carrito = new Carritos();
     
         // Verificar si el producto ya está en el carrito
-        $producto_en_carrito = $carrito->where('nombre', $nombre)->first();
+        $producto_en_carrito = $carrito->where('id_teclado', $id)->first();
     
         if ($producto_en_carrito) {
             // Actualizar cantidad 
@@ -41,6 +47,8 @@ class Carrito extends Controller
         } else {
             // Insertar nuevo producto en el carrito
             $datos = [
+                'id_user' => $id_user,
+                'id_teclado' => $id,
                 'nombre' => $nombre,
                 'precio' => $precio,
                 'imagen' => $imagen,
