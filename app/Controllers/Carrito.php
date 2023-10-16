@@ -37,26 +37,28 @@ class Carrito extends Controller
         // Crear una instancia del modelo que representa el carrito
         $carrito = new Carritos();
     
-        // Verificar si el producto ya está en el carrito
-        $producto_en_carrito = $carrito->where('id_teclado', $id)->first();
-    
-        if ($producto_en_carrito) {
-            // Actualizar cantidad 
-            $carrito->update($producto_en_carrito['id_carrito'], ['cantidad' => $producto_en_carrito['cantidad'] + 1]);
-        } else {
-            // Insertar nuevo producto en el carrito
-            $datos = [
-                'id_user' => $id_user,
-                'id_teclado' => $id,
-                'nombre' => $nombre,
-                'precio' => $precio,
-                'cantidad' => 1, 
-            ];
-    
-            $carrito->insert($datos);
-        }
-    
-        return redirect()->to('carrito');
+       // Verificar si el producto ya está en el carrito para el usuario actual
+$producto_en_carrito = $carrito->where('id_teclado', $id)
+->where('id_user', $id_user)
+->first();
+
+if ($producto_en_carrito) {
+// Actualizar cantidad 
+$carrito->update($producto_en_carrito['id_carrito'], ['cantidad' => $producto_en_carrito['cantidad'] + 1]);
+} else {
+// Insertar nuevo producto en el carrito
+$datos = [
+'id_user' => $id_user,
+'id_teclado' => $id,
+'nombre' => $nombre,
+'precio' => $precio,
+'cantidad' => 1, 
+];
+
+$carrito->insert($datos);
+}
+
+return redirect()->to('carrito');
     }
     
 }
