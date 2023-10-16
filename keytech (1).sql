@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2023 a las 02:03:28
+-- Tiempo de generación: 17-10-2023 a las 00:14:54
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.1.17
 
@@ -33,8 +33,16 @@ CREATE TABLE `carrito` (
   `id_teclado` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `precio` decimal(10,2) NOT NULL
+  `precio` decimal(10,2) NOT NULL,
+  `total` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `carrito`
+--
+
+INSERT INTO `carrito` (`id_carrito`, `id_user`, `id_teclado`, `nombre`, `cantidad`, `precio`, `total`) VALUES
+(90, 3, 46, 'teclado', 2, 125000.00, 250000.00);
 
 -- --------------------------------------------------------
 
@@ -74,6 +82,14 @@ CREATE TABLE `teclados` (
   `precio` decimal(10,2) NOT NULL,
   `imagen` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `teclados`
+--
+
+INSERT INTO `teclados` (`id_teclado`, `nombre`, `precio`, `imagen`) VALUES
+(46, 'teclado', 125000.00, '1697490947_0bcba303cfbd42d6b69a.jpg'),
+(47, 'hyperex', 5000.25, '1697490964_b53d8df7dc04f913ce47.jpg');
 
 -- --------------------------------------------------------
 
@@ -159,7 +175,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT de la tabla `descripcion_prod`
@@ -177,7 +193,7 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `teclados`
 --
 ALTER TABLE `teclados`
-  MODIFY `id_teclado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_teclado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo`

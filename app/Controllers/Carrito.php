@@ -23,42 +23,50 @@ class Carrito extends Controller
         return $vistaCarrito;
     }
     public function guardar()
-    {
-        // Obtener los datos del producto desde la segunda vista
-        $id = $this->request->getVar('id_teclado');
-        $nombre = $this->request->getVar('nombre'); 
-        $precio = $this->request->getVar('precio');
+{
+    // Obtener los datos del producto desde la segunda vista
+    $id = $this->request->getVar('id_teclado');
+    $nombre = $this->request->getVar('nombre'); 
+    $precio = $this->request->getVar('precio');
     
+    // Obtener id_user desde la sesión
+    $id_user = session('user')->id_user;
 
-        // Obtener id_user desde la sesión
-        $id_user = session('user')->id_user;
-
-
-        // Crear una instancia del modelo que representa el carrito
-        $carrito = new Carritos();
+    // Crear una instancia del modelo que representa el carrito
+    $carrito = new Carritos();
     
-       // Verificar si el producto ya está en el carrito para el usuario actual
-$producto_en_carrito = $carrito->where('id_teclado', $id)
-->where('id_user', $id_user)
-->first();
+    // Verificar si el producto ya está en el carrito para el usuario actual
+    $producto_en_carrito = $carrito->where('id_teclado', $id)
+                                   ->where('id_user', $id_user)
+                                   ->first();
 
-if ($producto_en_carrito) {
-// Actualizar cantidad 
-$carrito->update($producto_en_carrito['id_carrito'], ['cantidad' => $producto_en_carrito['cantidad'] + 1]);
-} else {
-// Insertar nuevo producto en el carrito
-$datos = [
-'id_user' => $id_user,
-'id_teclado' => $id,
-'nombre' => $nombre,
-'precio' => $precio,
-'cantidad' => 1, 
-];
+    // Calcular el total
+    $total = $precio; // Inicialmente, el total es igual al precio
+    if ($producto_en_carrito) {
+        // Si el producto ya está en el carrito, actualizar la cantidad y recalcular el total
+        $nuevaCantidad = $producto_en_carrito['cantidad'] + 1;
+        $total = $precio * $nuevaCantidad;
 
-$carrito->insert($datos);
+        // Si el producto ya está en el carrito, actualizar la cantidad y el total en la base de datos
+        $carrito->update($producto_en_carrito['id_carrito'], ['cantidad' => $nuevaCantidad, 'total' => $total]);
+        
+    } else {
+        // Si el producto no está en el carrito, agregar uno nuevo con cantidad 1 y el total calculado
+        $datos = [
+            'id_user' => $id_user,
+            'id_teclado' => $id,
+            'nombre' => $nombre,
+            'precio' => $precio,
+            'cantidad' => 1,
+            'total' => $total,
+        ];
+
+        // Insertar nuevo producto en el carrito
+        $carrito->insert($datos);
+    }
+
+    return redirect()->to('carrito');
 }
 
-return redirect()->to('carrito');
-    }
     
 }

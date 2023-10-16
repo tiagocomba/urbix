@@ -41,5 +41,41 @@ class Carrito2 extends Controller{
         // Redirigir a la página del carrito
         return $this->response->redirect(site_url('/carrito2'));
     }
+    public function actualizarcar()
+    {
+        $car = new Carritos();
+    
+        // Obtener id_user desde la sesión
+        $id_user = session('user')->id_user;
+    
+        // Obtener datos del formulario
+        $cantidades = $this->request->getPost('cantidad');
+    
+        // Verificar si el carrito está vacío
+        if (empty($cantidades)) {
+            // Redirigir a la vista carrito2
+            return redirect()->to(base_url('carrito2'));
+        }
+    
+        foreach ($cantidades as $id_carrito => $cantidad) {
+            // Validar que la cantidad sea un número entero positivo
+            if (is_numeric($cantidad) && $cantidad > 0) {
+                // Obtener los datos del carrito antes de actualizar
+                $datosCar = $car->find($id_carrito);
+    
+                // Calcular el nuevo total
+                $nuevoTotal = $datosCar['precio'] * $cantidad;
+    
+                // Actualizar la cantidad y el total en la base de datos
+                $car->update($id_carrito, ['cantidad' => $cantidad, 'total' => $nuevoTotal]);
+            }
+        }
+    
+        // Redirigir a la vista carrito2
+        return redirect()->to(base_url('carrito2'));
+    }
+    
+    
+
     
 }
