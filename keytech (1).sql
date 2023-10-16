@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2023 a las 01:20:37
+-- Tiempo de generación: 16-10-2023 a las 02:03:28
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.1.17
 
@@ -33,8 +33,7 @@ CREATE TABLE `carrito` (
   `id_teclado` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `precio` decimal(10,2) NOT NULL,
-  `imagen` varchar(255) NOT NULL
+  `precio` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -160,7 +159,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT de la tabla `descripcion_prod`
@@ -178,7 +177,7 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `teclados`
 --
 ALTER TABLE `teclados`
-  MODIFY `id_teclado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id_teclado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo`
