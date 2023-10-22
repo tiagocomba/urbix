@@ -65,10 +65,16 @@ class Home extends BaseController
     public function catalogo()
     {
         
-        return view('main/primary/catalogo');
+        return view('main/catalogo/catalogo');
         
     }
 
+    public function desc_producto()
+    {
+        
+        return view('main/catalogo/desc_producto');
+        
+    }
     public function contact()
     {
         
