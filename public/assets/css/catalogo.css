@@ -12,6 +12,7 @@ body{
     max-width: 1200px;
     font-family: 'Lato';
     color: #333;
+    background: #0D1117;
 }
 
 .icon-cart{
@@ -147,6 +148,7 @@ header{
 
 .item{
     border-radius: 10px;
+    background:#fff ;
 }
 
 .item:hover{

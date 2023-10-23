@@ -19,63 +19,76 @@
 			<div class="item">
 				<figure>
 					<a href="<?php echo base_url('desc_producto')?>"><img
-						src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+						src="<?php echo base_url('assets/img/productos/gris.png')?>"
 						alt="producto"
 					/></a>
 				</figure>
 				<div class="info-product">
-					<h2>Zapatos Nike</h2>
+					<h2>gris</h2>
 					<p class="price">$80</p>
 				</div>
 			</div>
 			<div class="item">
 				<figure>
-					<img
-						src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+					<a href="<?php echo base_url('desc_producto')?>"><img
+						src="<?php echo base_url('assets/img/productos/blue.png')?>"
 						alt="producto"
-					/>
+					/></a>
 				</figure>
 				<div class="info-product">
-					<h2>Audifonos</h2>
+					<h2>blue</h2>
 					<p class="price">$20</p>
 					
 				</div>
 			</div>
 			<div class="item">
 				<figure>
-					<img
-						src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1099&q=80"
+					<a href="<?php echo base_url('desc_producto')?>"><img
+						src="<?php echo base_url('assets/img/productos/negro.png')?>"
 						alt="producto"
-					/>
+					/></a>
 				</figure>
 				<div class="info-product">
-					<h2>Reloj</h2>
+					<h2>negro</h2>
 					<p class="price">$50</p>
 					
 				</div>
 			</div>
 			<div class="item">
 				<figure>
-					<img
-						src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+					<a href="<?php echo base_url('desc_producto')?>"><img
+						src="<?php echo base_url('assets/img/productos/rosa.png')?>"
 						alt="producto"
-					/>
+					/></a>
 				</figure>
 				<div class="info-product">
-					<h2>Smartwatch</h2>
+					<h2>rosa</h2>
 					<p class="price">$90</p>
 					
 				</div>
 			</div>
 			<div class="item">
 				<figure>
-					<img
-						src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
+					<a href="<?php echo base_url('desc_producto')?>"><img
+						src="<?php echo base_url('assets/img/productos/yellow.png')?>"
 						alt="producto"
-					/>
+					/></a>
 				</figure>
 				<div class="info-product">
-					<h2>Perfume</h2>
+					<h2>yellow</h2>
+					<p class="price">$50</p>
+					
+				</div>
+			</div>
+			<div class="item">
+				<figure>
+					<a href="<?php echo base_url('desc_producto')?>"><img
+						src="<?php echo base_url('assets/img/productos/blanco.png')?>"
+						alt="producto"
+					/></a>
+				</figure>
+				<div class="info-product">
+					<h2>white</h2>
 					<p class="price">$50</p>
 					
 				</div>
