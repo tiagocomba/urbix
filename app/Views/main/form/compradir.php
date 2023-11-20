@@ -1,27 +1,39 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Realizar Compra</title>
 </head>
+
 <body>
     <header>
         <h1>Realizar compra</h1>
     </header>
-    <div class="user-stats">
-                <p><strong>Producto:</strong> <?= session('nombre'); ?></p>
-                <p><strong>Cantidad:</strong> <?= session('cantidad'); ?></p>
-                <p><strong>Precio:</strong> <?= session('precio'); ?></p>
-                <p><strong>Total de la compra:</strong> <?= session('totalCompra'); ?></p>
 
-            </div>
+    <!-- Muestra la información del producto obtenida de la sesión -->
+    <div class="user-stats">
+        <p><strong>Producto:</strong>
+            <?= session('nombre'); ?>
+        </p>
+        <p><strong>Cantidad:</strong>
+            <?= session('cantidad'); ?>
+        </p>
+        <p><strong>Precio:</strong>
+            <?= session('precio'); ?>
+        </p>
+        <p><strong>Total de la compra:</strong>
+            <?= session('totalCompra'); ?>
+        </p>
+
+    </div>
     <section class="contenedor">
         <!-- Formulario para la información de envío y compra PayPal -->
         <div class="informacion-envio">
             <h2>Información de Envío</h2>
-            <form >
+            <form>
 
                 <label for="pais">País:</label>
                 <input type="text" id="pais" name="pais" required>
@@ -49,16 +61,20 @@
                 <textarea id="descripcion_casa" name="descripcion_casa"></textarea>
 
                 <a href="<?= base_url('cancelcompradir')?>" type="button" class="boton-cancelar">Cancelar Compra</a>
-           
+
             </form>
         </div>
     </section>
 </body>
+
+<!-- Inclusión del script de PayPal -->
 <script src="https://www.paypal.com/sdk/js?client-id=AZQBCaHQ4lHq6OI-mMRoxPv8nHioysdo_lnwAWuXxHgD31c5-3Nvw-fs0_WTL_-ghOvt8WeoipePRltE"></script>
 
 <div id="paypal-button-conteiner"></div>
-    
+
+<!-- Script para configurar y renderizar el botón de PayPal -->
 <script>
+    // Configuración de estilo del botón de PayPal
     paypal.Buttons({
         style: {
             shape: 'pill',
@@ -66,6 +82,8 @@
             layout: 'vertical',
             label: 'pay',
         },
+
+        // Función que se ejecuta al crear la orden de PayPal
         createOrder: function(data, actions) {
             var pais = document.getElementById('pais').value;
             var provincia = document.getElementById('provincia').value;
@@ -99,9 +117,13 @@
                 });
             }
         },
+
+        // Función que se ejecuta cuando el usuario cancela el pago
         onCancel: function(data) {
             alert('Pago cancelado');
         },
+        
+        // Función que se ejecuta al aprobar el pago por parte del usuario
         onApprove: function(data, actions) {
             actions.order.capture().then(function(details) {
                 // Construye la URL dinámica con separadores ("/")
@@ -122,4 +144,5 @@
         }
     }).render('#paypal-button-conteiner');
 </script>
+
 </html>

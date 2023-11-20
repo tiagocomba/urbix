@@ -1,39 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Realizar Compra</title>
 </head>
+
 <body>
     <header>
         <h1>Realizar compra</h1>
     </header>
     <div class="user-stats">
-    <?php
+        <?php
     foreach ($carritos as $carrito) {
         $nombre[] = $carrito->nombre;
         $cantidad[] = $carrito->cantidad;
-         // Calcular el subtotal para cada producto
+        // Calcular el subtotal para cada producto
          $subtotal = $carrito->cantidad * $carrito->precio;
-         $subtotales[] = '$' . number_format($subtotal, 2);
-        $preciou[] = '$' . number_format($carrito->precio, 2); // Formatear el precio
+
+        // Almacena el subtotal a con el símbolo de peso y dos decimales
+        $subtotales[] = '$' . number_format($subtotal, 2);
+        $preciou[] = '$' . number_format($carrito->precio, 2); 
 
     }
     ?>
-    <p><strong>Productos:</strong> <?= implode(', ', $nombre); ?></p>
-    <p><strong>cantidad:</strong> <?= implode(', ', $cantidad); ?></p>
-    <p><strong>precio:</strong> <?= implode(', ', $preciou); ?></p>
-    <p><strong>subtotal:</strong> <?= implode(', ', $subtotales); ?></p>
-    <p><strong>Total de la compra:</strong> <?= $totalC; ?></p>
-</div>
+
+    <!-- Muestra el nombre/cantidad etc de los productos separados por comas -->
+            <p><strong>Productos:</strong>
+                <?= implode(', ', $nombre); ?>
+            </p>
+            <p><strong>cantidad:</strong>
+                <?= implode(', ', $cantidad); ?>
+            </p>
+            <p><strong>precio:</strong>
+                <?= implode(', ', $preciou); ?>
+            </p>
+            <p><strong>subtotal:</strong>
+                <?= implode(', ', $subtotales); ?>
+            </p>
+            <p><strong>Total de la compra:</strong>
+                <?= $totalC; ?>
+            </p>
+    </div>
     <section class="contenedor">
 
         <!-- Formulario para la información de envío y compra PayPal -->
         <div class="informacion-envio">
             <h2>Información de Envío</h2>
-            <form >
+            <form>
 
                 <label for="pais">País:</label>
                 <input type="text" id="pais" name="pais" required>
@@ -62,16 +78,21 @@
                 <textarea id="descripcion_casa" name="descripcion_casa"></textarea>
 
                 <a href="<?= base_url('carrito2')?>" type="button" class="boton-cancelar">Cancelar Compra</a>
-           
+
             </form>
         </div>
     </section>
 </body>
+
+<!-- Inclusión del script de PayPal -->
 <script src="https://www.paypal.com/sdk/js?client-id=AZQBCaHQ4lHq6OI-mMRoxPv8nHioysdo_lnwAWuXxHgD31c5-3Nvw-fs0_WTL_-ghOvt8WeoipePRltE"></script>
 
 <div id="paypal-button-conteiner"></div>
-    
+
+<!-- Script para configurar y renderizar el botón de PayPal -->
 <script>
+
+    // Configuración de estilo del botón de PayPal
     paypal.Buttons({
         style: {
             shape: 'pill',
@@ -79,6 +100,8 @@
             layout: 'vertical',
             label: 'pay',
         },
+
+        // Función que se ejecuta al crear la orden de PayPal
         createOrder: function(data, actions) {
             var pais = document.getElementById('pais').value;
             var provincia = document.getElementById('provincia').value;
@@ -112,9 +135,13 @@
                 });
             }
         },
+
+        // Función que se ejecuta cuando el usuario cancela el pago
         onCancel: function(data) {
             alert('Pago cancelado');
         },
+
+        // Función que se ejecuta al aprobar el pago por parte del usuario
         onApprove: function(data, actions) {
             actions.order.capture().then(function(details) {
                 // Construye la URL dinámica con separadores ("/")
