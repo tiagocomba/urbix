@@ -26,7 +26,29 @@
     <header>
         <h1></h1>
     </header>
+<!-- Agrega este código donde desees mostrar el botón de filtro -->
+<div>
+    <label for="tipo">Filtrar por tipo:</label>
+    <!-- this.value estaria guardando el value de cada uno
+    ejemplo en todos no tiene un value por lo que en el script
+    se estaria cumpliento la condicion de idTipo === ""
+    encambio en el foreach se estaria guardando la id_tipoprod
+    por lo que se cumple el else que pasa por parametros esa id
+    a routes luego al controlador y de ahi hace las operaciones con esa id
+-->
+    <select id="tipo" onchange="filtrarPorTipo(this.value)"> 
 
+    <option value="">Tipo</option>
+    
+    <option value="">Todos</option>
+    <?php foreach ($tipos as $tipo): ?>
+        <option value="<?php echo $tipo['id_tipoprod']; ?>" <?php echo ($tipo_actual == $tipo['id_tipoprod']) ? 'selected' : ''; ?>>
+            <?php echo $tipo['tipo']; ?>
+        </option>
+    <?php endforeach; ?>
+</select>
+
+</div>
     <!-- Sección principal de la página -->
     <section class="contenedor">
         <!-- Contenedor de elementos -->
@@ -38,6 +60,7 @@
                         <!-- Campos ocultos para el ID del producto, cantidad y precio -->
                         <input type="hidden" name="id_producto" value="<?php echo $producto['id_producto']; ?>">
                         <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
+                        <input type="hidden" name="tipo_actual" value="<?php echo isset($tipo_actual) ? $tipo_actual : ''; ?>">
 
                         <!-- Visualización de información del producto -->
                         <span class="titulo-item"><?php echo $producto['nombre']; ?></span>
@@ -56,6 +79,7 @@
                         <input type="hidden" name="id_producto" value="<?php echo $producto['id_producto']; ?>">
                         <input type="hidden" name="precio" value="<?php echo $producto['precio']; ?>">
 
+
                         <!-- Campo oculto para la cantidad en el segundo formulario -->
                         <input type="hidden" name="cantidad" class="cantidad-hidden" value="1">
 
@@ -70,6 +94,18 @@
         <?php echo $pie; ?>
     </section>
 </body>
+
+<!-- Script para el filtrado por tipo -->
+<script>
+    function filtrarPorTipo(idTipo) {
+        if (idTipo === "") {
+            window.location.href = "<?php echo base_url('carrito'); ?>";
+        } else {
+            window.location.href = "<?php echo base_url('productof/'); ?>" + idTipo;
+        }
+    }
+</script>
+
 
 <!-- Script para sincronizar campos de cantidad entre formularios -->
 <script>

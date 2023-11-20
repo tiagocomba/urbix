@@ -77,8 +77,14 @@ $routes->post('enviar__email', 'Email2::enviar__email');
 
 // seccion controlador Carrito
 
+// Ruta sin parámetro
 $routes->get('carrito','Carrito::index');
+// Ruta con parámetro
+$routes->get('carritop/(:any)','Carrito::index/$1');
 $routes->post('carrito/guar','Carrito::guardar');
+//
+$routes->get('productof/(:any)', 'Carrito::filtrarPorTipo/$1');
+
 
 // seccion controlador Carrito2
 
@@ -121,8 +127,6 @@ if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
 
 
 //$routes->get('completado/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)', 'catalogo::completado/$1/$2/$3/$4/$5/$6/$7');
-
-
 
 
 
